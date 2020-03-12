@@ -1,4 +1,4 @@
-package com.example.mvvm_kitty.data.local.models
+package com.example.mvvm_kitty.data.models
 
 data class Breed (
 
@@ -15,7 +15,6 @@ data class Breed (
     val life_span: String,
 
     val origin: String
-
 
 ){
 

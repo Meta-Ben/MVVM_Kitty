@@ -4,6 +4,5 @@ import com.example.mvvm_kitty.data.remote.CatService
 
 class CatRepository(private val catService : CatService) {
 
-
-    fun getBreeds() = catService.getAllBreeds()
+    fun getBreeds() = catService.getAllBreeds().value?.toEntity()
 }

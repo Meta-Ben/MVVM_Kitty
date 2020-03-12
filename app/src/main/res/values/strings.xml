@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MVVM_Kitty</string>
+    <string name="title_activity_breeds">BreedsActivity</string>
 </resources>

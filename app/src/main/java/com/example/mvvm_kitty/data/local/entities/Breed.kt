@@ -1,4 +1,4 @@
-package com.example.mvvm_kitty.data.models
+package com.example.mvvm_kitty.data.local.entities
 
 data class Breed (
 

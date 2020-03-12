@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface CatService {
 
     @GET("breeds")
-    fun getAllBreeds(): LiveData<BreedDto>
+    fun getAllBreeds(): LiveData<List<BreedDto>>
 }

@@ -2,6 +2,7 @@ package com.example.mvvm_kitty.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.mvvm_kitty.R
 
 class BreedsActivity : AppCompatActivity() {
 

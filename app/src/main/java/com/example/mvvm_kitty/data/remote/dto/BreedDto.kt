@@ -1,7 +1,10 @@
 package com.example.mvvm_kitty.data.remote.dto
 
+import com.example.mvvm_kitty.data.local.entities.Breed
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class BreedDto(@Json(name = "suppressed_tail")
                     val suppressedTail: Int = 0,
                     @Json(name = "wikipedia_url")
@@ -73,4 +76,19 @@ data class BreedDto(@Json(name = "suppressed_tail")
                     @Json(name = "stranger_friendly")
                     val strangerFriendly: Int = 0,
                     @Json(name = "affection_level")
-                    val affectionLevel: Int = 0)
+                    val affectionLevel: Int = 0
+) {
+
+    fun toEntity(): Breed {
+        return Breed(
+            adaptability,
+            affectionLevel,
+            description,
+            id,
+            name,
+            lifeSpan,
+            origin
+        )
+
+    }
+}

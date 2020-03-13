@@ -8,17 +8,20 @@ import com.example.mvvm_kitty.data.remote.CatService
 class CatRepository(private val catService : CatService) {
 
 
+
+
+    private val mObservableBreeds: MediatorLiveData<List<Breed>>
+
     init {
+        mObservableBreeds = MediatorLiveData()
         getBreedsFromApi()
     }
-
-    private val mObservableBreeds: MediatorLiveData<List<Breed>> = MediatorLiveData()
 
     private fun getBreedsFromApi()  {
 
         mObservableBreeds.addSource(catService.getAllBreeds()) {
 
-            mObservableBreeds.postValue(it.map { breedDto ->  breedDto.toEntity()})
+            mObservableBreeds.postValue(it.resource?.map { breedDto ->  breedDto.toEntity()})
         }
 
     }

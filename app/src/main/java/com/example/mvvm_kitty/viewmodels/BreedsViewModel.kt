@@ -25,11 +25,7 @@ class BreedsViewModel(application: Application, catRepository: CatRepository) : 
     class Factory(private val mApplication: Application) :
         ViewModelProvider.NewInstanceFactory() {
 
-        private val mRepository: CatRepository
-
-        init {
-            mRepository = (mApplication as BasicApp).getCatRepository()
-        }
+        private val mRepository: CatRepository = (mApplication as BasicApp).getCatRepository()
 
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return BreedsViewModel(mApplication, mRepository) as T

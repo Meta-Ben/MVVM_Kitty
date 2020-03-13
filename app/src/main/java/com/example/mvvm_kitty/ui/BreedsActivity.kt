@@ -10,17 +10,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm_kitty.R
 import com.example.mvvm_kitty.data.local.entities.Breed
 import com.example.mvvm_kitty.viewmodels.BreedsViewModel
+import com.example.mvvm_kitty.databinding.ActivityBreedsBinding
 
 class BreedsActivity : AppCompatActivity() {
 
 
-    private lateinit var mBinding : ViewDataBinding
+    private lateinit var mBinding : ActivityBreedsBinding
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_breeds)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_breeds)
 
 
 
@@ -34,19 +35,14 @@ class BreedsActivity : AppCompatActivity() {
 
     private fun subscribeToModel(breedsViewModel: BreedsViewModel) {
 
-        /*breedsViewModel.getBreeds().observe(mBinding.lifecycleOwner!!, {
-            t : List<Breed>? ->
-            if(t != null) {
-                Log.d("ooj", "");
+        breedsViewModel.getBreeds().observe(this, Observer {
 
-            }
-        })*/
 
-        breedsViewModel.getBreeds().observe(mBinding.lifecycleOwner!!, Observer {
-
+            mBinding.textdebase.text = it.get(0).name
             Log.d("KOJI", "KOJIMAAA")
 
         })
+
 
     }
 }

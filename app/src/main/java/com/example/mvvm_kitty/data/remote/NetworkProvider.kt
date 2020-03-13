@@ -1,6 +1,8 @@
 package com.example.mvvm_kitty.data.remote
 
 import com.example.mvvm_kitty.BuildConfig
+import com.github.leonardoxh.livedatacalladapter.LiveDataCallAdapterFactory
+import com.github.leonardoxh.livedatacalladapter.LiveDataResponseBodyConverterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -22,8 +24,9 @@ object NetworkProvider {
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.API_BASE_URL)
+            .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
+            .addConverterFactory(LiveDataResponseBodyConverterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .client(createOkHttpClient())
             .build()
 
     }

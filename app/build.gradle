@@ -26,6 +26,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -48,6 +51,9 @@ dependencies {
     //RETROFIT FOR HTTP
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+
+    //Retrofit Converter Moshi
+    implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
 
     //Moshi
     implementation 'com.squareup.moshi:moshi:1.8.0'

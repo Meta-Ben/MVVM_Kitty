@@ -7,6 +7,7 @@ import com.example.mvvm_kitty.data.remote.CatService
 
 class CatRepository(private val catService : CatService) {
 
+
     init {
         getBreedsFromApi()
     }
@@ -23,7 +24,7 @@ class CatRepository(private val catService : CatService) {
     }
 
     /**
-     * Get the list of breeds from the api and get notified when the data changes.
+     * Get the list of breeds from the api or other source and get notified when the data changes.
      */
     fun getBreeds(): LiveData<List<Breed>> {
         return mObservableBreeds

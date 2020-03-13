@@ -4,9 +4,10 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.mvvm_kitty.BasicApp
 import com.example.mvvm_kitty.data.local.entities.Breed
+import com.example.mvvm_kitty.data.local.entities.BreedImage
 import com.example.mvvm_kitty.data.repositories.CatRepository
 
-class BreedsViewModel(application: Application, catRepository: CatRepository) : AndroidViewModel(application) {
+class BreedsViewModel(application: Application, private val catRepository: CatRepository) : AndroidViewModel(application) {
 
     private val mObservableBreeds: LiveData<List<Breed>> = catRepository.getBreeds()
 
@@ -16,6 +17,10 @@ class BreedsViewModel(application: Application, catRepository: CatRepository) : 
      */
     fun getBreeds(): LiveData<List<Breed>> {
         return mObservableBreeds
+    }
+
+    fun getBreedImages(breedId: String): LiveData<List<BreedImage>> {
+        return catRepository.getBreedImages(breedId)
     }
 
     /**

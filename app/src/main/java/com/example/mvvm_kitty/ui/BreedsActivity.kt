@@ -37,11 +37,20 @@ class BreedsActivity : AppCompatActivity() {
 
         breedsViewModel.getBreeds().observe(this, Observer {
 
+          //  mBinding.setCatImage(it.get(0).)
+            /*mBinding.textdebase.text = it.get(0).name
+            mBinding.catImage.*/
+            mBinding.catSelected = it.get(0)
 
-            mBinding.textdebase.text = it.get(0).name
-            Log.d("KOJI", "KOJIMAAA")
+            breedsViewModel.getBreedImages(it.get(0).id).observe(this, Observer {
+
+                mBinding.catImageUrl = it.get(0).url
+            })
+
 
         })
+
+
 
 
     }

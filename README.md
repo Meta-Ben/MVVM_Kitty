@@ -1,3 +1,5 @@
+( WORK IN PROGRESS )
+
 <h1 align="center"> MVVM Template with Cats :cat: </h1>
 <p align="center">
 <img src="https://img.shields.io/badge/platform-android-green.svg" />

@@ -21,6 +21,7 @@ import kotlinx.coroutines.runBlocking
 class BreedsViewModel(application: Application, private val catRepository: CatRepository) : AndroidViewModel(application) {
 
     private var mObservableBreeds: LiveData<List<BreedEntity>> = MutableLiveData<List<BreedEntity>>()
+    private lateinit var mObservableBreedImage: LiveData<List<BreedImageEntity>>
 
     private lateinit var observableBreeds: MutableLiveData<List<BreedEntity>>
 
@@ -35,23 +36,8 @@ class BreedsViewModel(application: Application, private val catRepository: CatRe
         return mObservableBreeds
     }
 
-    fun getBreedImages(breeds : List<BreedEntity>) : LiveData<List<BreedEntity>> {
-
-
-        breeds.map {breed ->
-            Transformations.switchMap(catRepository.getBreedImages(breed.id)) {
-
-
-                val liveData = MutableLiveData<List<BreedImageEntity>>()
-                liveData.setValue(it)
-                liveData
-            }
-        }
-
-        val lv = MutableLiveData<List<BreedEntity>>()
-        lv.value = breeds
-        return lv
-
+    fun getBreedImages(breedId : String) : LiveData<List<BreedImageEntity>> {
+        return catRepository.getBreedImages(breedId)
     }
 
     /**

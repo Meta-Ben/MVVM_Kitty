@@ -1,22 +1,23 @@
 package com.example.mvvm_kitty.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm_kitty.R
-import com.example.mvvm_kitty.data.local.entities.Breed
-import com.example.mvvm_kitty.viewmodels.BreedsViewModel
 import com.example.mvvm_kitty.databinding.ActivityBreedsBinding
+import com.example.mvvm_kitty.ui.adapter.BreedsSpinnerAdapter
+import com.example.mvvm_kitty.viewmodels.BreedsViewModel
 
 class BreedsActivity : AppCompatActivity() {
 
-
+    private lateinit var viewModel: BreedsViewModel
     private lateinit var mBinding : ActivityBreedsBinding
 
+    private lateinit var breedSpinnerAdapter: BreedsSpinnerAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,34 +25,47 @@ class BreedsActivity : AppCompatActivity() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_breeds)
 
 
-
         //Inject dependance dynamically
         val factory = BreedsViewModel.Factory(application)
-        val viewModel = ViewModelProvider(this, factory).get(BreedsViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(BreedsViewModel::class.java)
+
+        mBinding.breedSelector.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                mBinding.catSelected = breedSpinnerAdapter.getItem(position)
+            }
+
+        }
 
 
         subscribeToModel(viewModel)
   }
 
+
+    override fun onPause() {
+        super.onPause()
+
+       // mBinding.breedSelector.dismissDropDown()
+
+    }
+
+
     private fun subscribeToModel(breedsViewModel: BreedsViewModel) {
+
+        //Todo: Gerer les erreurs reseau
 
         breedsViewModel.getBreeds().observe(this, Observer {
 
-          //  mBinding.setCatImage(it.get(0).)
-            /*mBinding.textdebase.text = it.get(0).name
-            mBinding.catImage.*/
-            mBinding.catSelected = it.get(0)
+            breedEntities ->
 
-            breedsViewModel.getBreedImages(it.get(0).id).observe(this, Observer {
+            mBinding.catSelected = breedEntities[0]
 
-                mBinding.catImageUrl = it.get(0).url
-            })
-
-
+            breedSpinnerAdapter = BreedsSpinnerAdapter(this, breedEntities)
+            mBinding.breedSelector.adapter = breedSpinnerAdapter
         })
-
-
-
 
     }
 }

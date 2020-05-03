@@ -1,12 +1,14 @@
 package com.example.mvvm_kitty.data.remote.dto
 
-import com.example.mvvm_kitty.data.local.entities.Breed
-import com.example.mvvm_kitty.data.local.entities.BreedImage
+import com.example.mvvm_kitty.data.local.entities.BreedImageEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class BreedImageDto(@Json(name = "width")
+data class BreedImageDto(
+                         @Json(name = "breeds")
+                         val breeds : List<BreedDto>,
+                         @Json(name = "width")
                          val width: Int = 0,
                          @Json(name = "id")
                          val id: String = "",
@@ -15,12 +17,13 @@ data class BreedImageDto(@Json(name = "width")
                          @Json(name = "height")
                          val height: Int = 0)
 {
-    fun toEntity(): BreedImage {
-        return BreedImage(
+    fun toEntity(): BreedImageEntity {
+        return BreedImageEntity(
             width,
             id,
             url,
-            height
+            height,
+            breeds[0].id
         )
 
     }

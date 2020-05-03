@@ -5,10 +5,9 @@
 
 
 <data>
-
     <variable
         name="catSelected"
-        type="com.example.mvvm_kitty.data.local.entities.Breed" />
+        type="com.example.mvvm_kitty.data.local.entities.BreedEntity" />
 
     <variable
         name="catImageUrl"
@@ -29,7 +28,9 @@
         android:id="@+id/breed_selector"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_margin="8dp"
+        android:layout_margin="10dp"
+        tools:listitem="@layout/spinner_item"
+        android:spinnerMode="dialog"
         app:layout_constraintTop_toTopOf="parent"/>
 
 

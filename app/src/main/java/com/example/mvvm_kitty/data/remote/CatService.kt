@@ -11,10 +11,11 @@ import retrofit2.http.Query
 interface CatService {
 
     @GET("breeds")
-    fun getAllBreeds(): LiveData<Resource<List<BreedDto>>>
+    fun getAllBreeds() : LiveData<Resource<List<BreedDto>>>
 
     @GET("images/search")
     fun getAllImages(
-        @Query("breed_id") breedId: String
+        @Query("breed_id") breed_id: String,
+        @Query("limit") limit: Int
     ): LiveData<Resource<List<BreedImageDto>>>
 }

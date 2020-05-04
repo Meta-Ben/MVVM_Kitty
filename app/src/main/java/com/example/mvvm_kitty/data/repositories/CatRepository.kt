@@ -19,6 +19,8 @@ class CatRepository(private val catService : CatService) {
 
     private fun getBreedsFromApi() : LiveData<List<BreedEntity>>{
 
+        Log.d("FROM", "GETBREEDSFROMAPI")
+
         mObservableBreeds.addSource(catService.getAllBreeds()) {
            mObservableBreeds.postValue(it.resource?.map { breedDto ->
                breedDto.toEntity()

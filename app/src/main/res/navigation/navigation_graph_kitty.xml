@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph_kitty"
+    app:startDestination="@id/splashScreenActivity">
+
+    <fragment
+        android:id="@+id/splashScreenActivity"
+        android:name="com.example.mvvm_kitty.ui.SplashScreenFragment"
+        android:label="SplashScreenActivity" >
+        <action
+            android:id="@+id/action_splashScreenActivity_to_breedsActivity"
+            app:destination="@id/breedsActivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/breedsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/breedsActivity"
+        android:name="com.example.mvvm_kitty.ui.BreedsFragment"
+        android:label="BreedsActivity" />
+</navigation>

@@ -18,21 +18,16 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import kotlinx.coroutines.runBlocking
 
 
-class BreedsViewModel(application: Application, private val catRepository: CatRepository) : AndroidViewModel(application) {
+class BreedsViewModel(private val catRepository: CatRepository) : ViewModel() {
 
-    private var mObservableBreeds: LiveData<List<BreedEntity>> = MutableLiveData<List<BreedEntity>>()
-    private lateinit var mObservableBreedImage: LiveData<List<BreedImageEntity>>
+    private var mObservableBreeds : LiveData<List<BreedEntity>> = catRepository.getBreeds()
 
-    private lateinit var observableBreeds: MutableLiveData<List<BreedEntity>>
 
 
     /**
      * Expose the product to allow the UI to observe it
      */
     fun getBreeds(): LiveData<List<BreedEntity>> {
-
-        mObservableBreeds = catRepository.getBreeds()
-
         return mObservableBreeds
     }
 
@@ -50,7 +45,7 @@ class BreedsViewModel(application: Application, private val catRepository: CatRe
         private val mRepository: CatRepository = (mApplication as BasicApp).getCatRepository()
 
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return BreedsViewModel(mApplication, mRepository) as T
+            return BreedsViewModel(mRepository) as T
         }
     }
 

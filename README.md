@@ -1,11 +1,13 @@
-( WORK IN PROGRESS )
-
 <h1 align="center"> MVVM Template with Cats :cat: </h1>
 <p align="center">
 <img src="https://img.shields.io/badge/platform-android-green.svg" />
 <img src="https://img.shields.io/badge/language-kotlin-orange.svg" />
 <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" />
 </p>
+
+## Preview
+![Preview](http://www.metautbenjamin.com/img/MVVM1.png)
+
 
 ## Overview
 This Repository contains a simple MVVM Architecture using TheCatApi made in Kotlin without RX and without dagger2/Koin

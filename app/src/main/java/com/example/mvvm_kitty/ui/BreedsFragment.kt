@@ -14,6 +14,7 @@ import com.example.mvvm_kitty.R
 import com.example.mvvm_kitty.databinding.FragmentBreedsBinding
 import com.example.mvvm_kitty.ui.adapter.BreedsImagesSliderAdapter
 import com.example.mvvm_kitty.ui.adapter.BreedsSpinnerAdapter
+import com.example.mvvm_kitty.ui.loading.LoadingDialog
 import com.example.mvvm_kitty.viewmodels.BreedsViewModel
 
 class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
@@ -24,6 +25,8 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var breedSpinnerAdapter: BreedsSpinnerAdapter
 
     private lateinit var breedSliderAdapter: BreedsImagesSliderAdapter
+
+    private lateinit var loadingDialog: LoadingDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +40,7 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
         savedInstanceState: Bundle?
     ): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_breeds, container, false)
-
+        loadingDialog = LoadingDialog(requireActivity())
         //Inject dependance dynamically
         val factory = BreedsViewModel.Factory(requireActivity().application)
         viewModel = ViewModelProviders.of(this, factory).get(BreedsViewModel::class.java)
@@ -74,6 +77,7 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+        loadingDialog.startLoading()
         val breedSelected = breedSpinnerAdapter.getItem(position)
         mBinding.catSelected = breedSelected
 
@@ -89,6 +93,8 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
             mBinding.breedOriginContent.text = breedSelected.origin
 
             showValues()
+
+            loadingDialog.stopLoading()
 
         })
     }

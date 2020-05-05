@@ -6,7 +6,4 @@ import com.example.mvvm_kitty.R
 
 class KittyActivity : AppCompatActivity(R.layout.activity_kitty){
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 }

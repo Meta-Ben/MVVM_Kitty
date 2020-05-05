@@ -35,7 +35,6 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splashscreen) {
 
     private fun subscribeToModel(breedsViewModel: BreedsViewModel) {
 
-
         breedsViewModel.getBreeds().observe(viewLifecycleOwner, Observer {
 
             findNavController().navigate(R.id.action_splashScreenActivity_to_breedsActivity)

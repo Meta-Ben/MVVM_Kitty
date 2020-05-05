@@ -6,7 +6,7 @@
 </p>
 
 ## Preview
-![Preview](http://www.metautbenjamin.com/img/MVVM1.png)
+![Preview](http://www.metautbenjamin.com/img/MVVM2.png)
 
 
 ## Overview

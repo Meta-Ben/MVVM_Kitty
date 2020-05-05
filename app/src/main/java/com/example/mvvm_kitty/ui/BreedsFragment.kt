@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -37,9 +38,8 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
     ): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_breeds, container, false)
 
-
         //Inject dependance dynamically
-        val factory = BreedsViewModel.Factory(activity!!.application)
+        val factory = BreedsViewModel.Factory(requireActivity().application)
         viewModel = ViewModelProviders.of(this, factory).get(BreedsViewModel::class.java)
 
         mBinding.breedSelector.onItemSelectedListener = this
@@ -47,8 +47,16 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         mBinding.breedImageSlider.setSliderAdapter(breedSliderAdapter)
 
-
         subscribeToModel(viewModel)
+
+        val onBackPressedCallback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                    requireActivity().finish()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
 
         return mBinding.root
 
@@ -69,25 +77,48 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val breedSelected = breedSpinnerAdapter.getItem(position)
         mBinding.catSelected = breedSelected
 
+        hideValues()
+
         viewModel.getBreedImages(breedSelected.id).observe(this, Observer {
             val images = ArrayList(it)
             breedSliderAdapter.renewItems(images)
+
+            mBinding.breedDescription.text = breedSelected.description
+            mBinding.breedAffectionLevelContent.text = breedSelected.affection_level.toString()
+            mBinding.breedLifeSpanContent.text = breedSelected.life_span
+            mBinding.breedOriginContent.text = breedSelected.origin
+
+            showValues()
 
         })
     }
 
     private fun subscribeToModel(breedsViewModel: BreedsViewModel) {
 
-        breedsViewModel.getBreeds().observe(this, Observer {
+        breedsViewModel.getBreeds().observe(viewLifecycleOwner, Observer {
 
             breedEntities ->
 
             mBinding.catSelected = breedEntities[0]
 
-            breedSpinnerAdapter = BreedsSpinnerAdapter(context!!, breedEntities)
+            breedSpinnerAdapter = BreedsSpinnerAdapter(requireContext(), breedEntities)
             mBinding.breedSelector.adapter = breedSpinnerAdapter
         })
 
+    }
+
+    private fun showValues(){
+        mBinding.breedAffectionLevelContent.visibility = View.VISIBLE
+        mBinding.breedLifeSpanContent.visibility = View.VISIBLE
+        mBinding.breedOriginContent.visibility = View.VISIBLE
+        mBinding.breedDescription.visibility = View.VISIBLE
+    }
+
+    private fun hideValues(){
+        mBinding.breedAffectionLevelContent.visibility = View.GONE
+        mBinding.breedLifeSpanContent.visibility = View.GONE
+        mBinding.breedOriginContent.visibility = View.GONE
+        mBinding.breedDescription.visibility = View.GONE
     }
 
 

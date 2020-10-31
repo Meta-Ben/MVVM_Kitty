@@ -1,5 +1,6 @@
 package com.example.mvvm_kitty.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.mvvm_kitty.ui.adapter.BreedsImagesSliderAdapter
 import com.example.mvvm_kitty.ui.adapter.BreedsSpinnerAdapter
 import com.example.mvvm_kitty.ui.loading.LoadingDialog
 import com.example.mvvm_kitty.viewmodels.BreedsViewModel
+
 
 class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
@@ -105,12 +107,31 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
             breedEntities ->
 
-            mBinding.catSelected = breedEntities[0]
+            if(breedEntities == null){
+                showNoInternetDialog(breedsViewModel)
+            }else{
+                mBinding.catSelected = breedEntities[0]
 
-            breedSpinnerAdapter = BreedsSpinnerAdapter(requireContext(), breedEntities)
-            mBinding.breedSelector.adapter = breedSpinnerAdapter
+                breedSpinnerAdapter = BreedsSpinnerAdapter(requireContext(), breedEntities)
+                mBinding.breedSelector.adapter = breedSpinnerAdapter
+            }
+
+
         })
 
+    }
+
+    private fun showNoInternetDialog(breedsViewModel: BreedsViewModel){
+        AlertDialog.Builder(context)
+            .setTitle("Pas de chat :(")
+            .setMessage("à tu internet ?")
+            .setPositiveButton(
+                "Réessayer"
+            ) { _, _ ->
+                subscribeToModel(breedsViewModel)
+            }
+            .setNegativeButton("Je men fiche", null)
+            .show()
     }
 
     private fun showValues(){

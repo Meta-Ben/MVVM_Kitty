@@ -20,7 +20,7 @@
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Simple app to understand MVVM"
+        android:text="Simple app to learn a bit about cats"
         android:textSize="30sp"
         android:textAlignment="center"
         android:textStyle="italic"

@@ -1,21 +1,11 @@
-package com.example.mvvm_kitty.viewmodels
+package com.mvvm_kitty.viewmodels
 
 import android.app.Application
-import android.util.Log
-import android.view.animation.Transformation
 import androidx.lifecycle.*
-import com.example.mvvm_kitty.BasicApp
-import com.example.mvvm_kitty.data.local.entities.BreedEntity
-import com.example.mvvm_kitty.data.local.entities.BreedImageEntity
-import com.example.mvvm_kitty.data.repositories.CatRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import androidx.databinding.adapters.NumberPickerBindingAdapter.setValue
-import androidx.lifecycle.MutableLiveData
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import kotlinx.coroutines.runBlocking
+import com.mvvm_kitty.BasicApp
+import com.mvvm_kitty.data.local.entities.BreedEntity
+import com.mvvm_kitty.data.local.entities.BreedImageEntity
+import com.mvvm_kitty.data.repositories.CatRepository
 
 
 class BreedsViewModel(private val catRepository: CatRepository) : ViewModel() {

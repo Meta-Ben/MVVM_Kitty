@@ -1,4 +1,4 @@
-package com.example.mvvm_kitty.utils
+package com.mvvm_kitty.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

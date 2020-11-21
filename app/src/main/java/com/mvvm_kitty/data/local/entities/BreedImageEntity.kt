@@ -1,4 +1,4 @@
-package com.example.mvvm_kitty.data.local.entities
+package com.mvvm_kitty.data.local.entities
 
 //Entity was used to be stored into a local DB so no use here
 data class BreedImageEntity(

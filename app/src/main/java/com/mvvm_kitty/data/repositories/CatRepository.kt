@@ -1,15 +1,11 @@
-package com.example.mvvm_kitty.data.repositories
+package com.mvvm_kitty.data.repositories
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import com.example.mvvm_kitty.data.local.entities.BreedEntity
-import com.example.mvvm_kitty.data.local.entities.BreedImageEntity
-import com.example.mvvm_kitty.data.remote.CatService
-import com.example.mvvm_kitty.data.remote.dto.BreedDto
-import kotlinx.coroutines.*
+import com.mvvm_kitty.data.local.entities.BreedEntity
+import com.mvvm_kitty.data.local.entities.BreedImageEntity
+import com.mvvm_kitty.data.remote.CatService
 
 class CatRepository(private val catService : CatService) {
 

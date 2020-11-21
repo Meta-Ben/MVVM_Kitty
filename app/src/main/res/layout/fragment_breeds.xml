@@ -7,7 +7,7 @@
 <data>
     <variable
         name="catSelected"
-        type="com.example.mvvm_kitty.data.local.entities.BreedEntity" />
+        type="com.mvvm_kitty.data.local.entities.BreedEntity" />
 
     <variable
         name="catImageUrl"
@@ -15,7 +15,7 @@
 
     <variable
         name="viewModel"
-        type="com.example.mvvm_kitty.viewmodels.BreedsViewModel"/>
+        type="com.mvvm_kitty.viewmodels.BreedsViewModel"/>
 </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

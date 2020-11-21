@@ -1,10 +1,9 @@
-package com.example.mvvm_kitty.data.remote
+package com.mvvm_kitty.data.remote
 
 import androidx.lifecycle.LiveData
-import com.example.mvvm_kitty.data.remote.dto.BreedDto
-import com.example.mvvm_kitty.data.remote.dto.BreedImageDto
+import com.mvvm_kitty.data.remote.dto.BreedDto
+import com.mvvm_kitty.data.remote.dto.BreedImageDto
 import com.github.leonardoxh.livedatacalladapter.Resource
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

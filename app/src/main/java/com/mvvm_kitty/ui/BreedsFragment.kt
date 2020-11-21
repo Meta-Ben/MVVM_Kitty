@@ -1,4 +1,4 @@
-package com.example.mvvm_kitty.ui
+package com.mvvm_kitty.ui
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -11,12 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.mvvm_kitty.R
-import com.example.mvvm_kitty.databinding.FragmentBreedsBinding
-import com.example.mvvm_kitty.ui.adapter.BreedsImagesSliderAdapter
-import com.example.mvvm_kitty.ui.adapter.BreedsSpinnerAdapter
-import com.example.mvvm_kitty.ui.loading.LoadingDialog
-import com.example.mvvm_kitty.viewmodels.BreedsViewModel
+import com.mvvm_kitty.R
+import com.mvvm_kitty.databinding.FragmentBreedsBinding
+import com.mvvm_kitty.ui.adapter.BreedsImagesSliderAdapter
+import com.mvvm_kitty.ui.adapter.BreedsSpinnerAdapter
+import com.mvvm_kitty.ui.loading.LoadingDialog
+import com.mvvm_kitty.viewmodels.BreedsViewModel
 
 
 class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {

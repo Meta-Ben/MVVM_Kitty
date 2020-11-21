@@ -22,7 +22,7 @@ android {
         targetCompatibility 1.8
     }
     defaultConfig {
-        applicationId "com.example.mvvm_kitty"
+        applicationId "com.mvvm_kitty"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1

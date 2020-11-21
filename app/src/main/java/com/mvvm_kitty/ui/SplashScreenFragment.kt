@@ -1,15 +1,13 @@
-package com.example.mvvm_kitty.ui
+package com.mvvm_kitty.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.example.mvvm_kitty.R
-import com.example.mvvm_kitty.viewmodels.BreedsViewModel
+import com.mvvm_kitty.R
+import com.mvvm_kitty.viewmodels.BreedsViewModel
 
 
 class SplashScreenFragment : Fragment(R.layout.fragment_splashscreen) {

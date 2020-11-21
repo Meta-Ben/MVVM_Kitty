@@ -1,6 +1,6 @@
-package com.example.mvvm_kitty.data.remote
+package com.mvvm_kitty.data.remote
 
-import com.example.mvvm_kitty.BuildConfig
+import com.mvvm_kitty.BuildConfig
 import com.github.leonardoxh.livedatacalladapter.LiveDataCallAdapterFactory
 import com.github.leonardoxh.livedatacalladapter.LiveDataResponseBodyConverterFactory
 import com.squareup.moshi.Moshi

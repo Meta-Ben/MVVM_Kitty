@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/splashScreenActivity"
-        android:name="com.example.mvvm_kitty.ui.SplashScreenFragment"
+        android:name="com.mvvm_kitty.ui.SplashScreenFragment"
         android:label="SplashScreenActivity" >
         <action
             android:id="@+id/action_splashScreenActivity_to_breedsActivity"
@@ -15,6 +15,6 @@
     </fragment>
     <fragment
         android:id="@+id/breedsActivity"
-        android:name="com.example.mvvm_kitty.ui.BreedsFragment"
+        android:name="com.mvvm_kitty.ui.BreedsFragment"
         android:label="BreedsActivity" />
 </navigation>

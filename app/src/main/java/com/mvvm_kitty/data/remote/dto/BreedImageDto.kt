@@ -1,6 +1,6 @@
-package com.example.mvvm_kitty.data.remote.dto
+package com.mvvm_kitty.data.remote.dto
 
-import com.example.mvvm_kitty.data.local.entities.BreedImageEntity
+import com.mvvm_kitty.data.local.entities.BreedImageEntity
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

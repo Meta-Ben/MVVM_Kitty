@@ -1,4 +1,4 @@
-package com.example.mvvm_kitty.data.remote.dto
+package com.mvvm_kitty.data.remote.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

@@ -1,12 +1,12 @@
-package com.example.mvvm_kitty.ui.adapter
+package com.mvvm_kitty.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.example.mvvm_kitty.R
-import com.example.mvvm_kitty.data.local.entities.BreedEntity
+import com.mvvm_kitty.R
+import com.mvvm_kitty.data.local.entities.BreedEntity
 import kotlinx.android.synthetic.main.custom_spinner_item.view.*
 
 

@@ -1,8 +1,8 @@
-package com.example.mvvm_kitty.ui.loading
+package com.mvvm_kitty.ui.loading
 
 import android.app.Activity
 import android.app.AlertDialog
-import com.example.mvvm_kitty.R
+import com.mvvm_kitty.R
 
 class LoadingDialog(private val activity : Activity) {
 

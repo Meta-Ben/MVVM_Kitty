@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="image_height">800dp</dimen>
+    <dimen name="image_height">300dp</dimen>
     <dimen name="title_size">60sp</dimen>
     <dimen name="desc_size">40sp</dimen>
     <dimen name="simple_Text_size">30sp</dimen>

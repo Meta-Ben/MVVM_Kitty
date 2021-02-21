@@ -28,14 +28,9 @@ Just the basic :wink:
  ## Model View ViewModel 
  This project is basically a very simple representation of the MVVM ( without any optional library like Dagger2/Koin or RXJava/RXKotlin )
  and this is how it's implemented
- 
-- **Repository ( Models )**
-  - >Fetch data from DB/API
-  
-  - >Return LiveData 
   
 - **ViewModel**  
-  - >Expose models get from the repository to the view
+  - >Expose models get from the service to the view
   
   - >Can be create with a factory to allow the injection of dependencies
 

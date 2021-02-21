@@ -30,6 +30,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textAlignment="center"
+            android:textSize="@dimen/simple_Text_size"
             style="?attr/spinnerDropDownItemStyle"
             android:backgroundTint="@color/white"
             android:ellipsize="marquee"

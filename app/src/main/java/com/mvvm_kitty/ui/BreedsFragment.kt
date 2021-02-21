@@ -54,6 +54,9 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         subscribeToModel(viewModel)
 
+        loadingDialog.startLoading()
+        viewModel.fetchBreeds()
+
         val onBackPressedCallback: OnBackPressedCallback =
             object : OnBackPressedCallback(true /* enabled by default */) {
                 override fun handleOnBackPressed() {
@@ -79,33 +82,25 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-        loadingDialog.startLoading()
         val breedSelected = breedSpinnerAdapter.getItem(position)
         mBinding.catSelected = breedSelected
 
+        mBinding.breedDescription.text = breedSelected.description
+        mBinding.breedAffectionLevelContent.text = breedSelected.affection_level.toString()
+        mBinding.breedLifeSpanContent.text = breedSelected.life_span
+        mBinding.breedOriginContent.text = breedSelected.origin
+
         hideValues()
 
-        viewModel.getBreedImages(breedSelected.id).observe(this, Observer {
-            val images = ArrayList(it)
-            breedSliderAdapter.renewItems(images)
-
-            mBinding.breedDescription.text = breedSelected.description
-            mBinding.breedAffectionLevelContent.text = breedSelected.affection_level.toString()
-            mBinding.breedLifeSpanContent.text = breedSelected.life_span
-            mBinding.breedOriginContent.text = breedSelected.origin
-
-            showValues()
-
-            loadingDialog.stopLoading()
-
-        })
+        loadingDialog.startLoading()
+        viewModel.fetchBreedsImage(breedSelected.id)
     }
 
     private fun subscribeToModel(breedsViewModel: BreedsViewModel) {
 
-        breedsViewModel.getBreeds().observe(viewLifecycleOwner, Observer {
+        breedsViewModel.mObservableBreeds?.observe(viewLifecycleOwner, Observer { breedEntities ->
 
-            breedEntities ->
+            loadingDialog.stopLoading()
 
             if(breedEntities == null){
                 showNoInternetDialog(breedsViewModel)
@@ -115,22 +110,38 @@ class BreedsFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 breedSpinnerAdapter = BreedsSpinnerAdapter(requireContext(), breedEntities)
                 mBinding.breedSelector.adapter = breedSpinnerAdapter
             }
-
-
         })
+
+        breedsViewModel.mObservableBreedImages?.observe(viewLifecycleOwner, Observer {
+            if(it != null){
+                val images = ArrayList(it)
+                breedSliderAdapter.renewItems(images)
+
+
+                showValues()
+            } else {
+                showNoInternetDialog(viewModel)
+            }
+
+            loadingDialog.stopLoading()
+        })
+
 
     }
 
     private fun showNoInternetDialog(breedsViewModel: BreedsViewModel){
         AlertDialog.Builder(context)
-            .setTitle("Pas de chat :(")
-            .setMessage("à tu internet ?")
+            .setTitle("Not cat to show :(")
+            .setMessage("Internet is on ?")
             .setPositiveButton(
-                "Réessayer"
-            ) { _, _ ->
-                subscribeToModel(breedsViewModel)
+                "Retry"
+            ) { dialog, _ ->
+                dialog.dismiss()
+                viewModel.fetchBreeds()
             }
-            .setNegativeButton("Je men fiche", null)
+            .setNegativeButton("I don't care") { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 

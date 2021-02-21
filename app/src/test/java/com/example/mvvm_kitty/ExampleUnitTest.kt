@@ -1,4 +1,4 @@
-package com.example.mvvm_kitty
+package com.mvvm_kitty
 
 import org.junit.Test
 

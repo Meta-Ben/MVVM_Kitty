@@ -6,7 +6,9 @@
 </p>
 
 ## Preview
-![Preview](http://metautbenjamin.com:3000/file/image/MVVM1.png)
+![Preview](https://github.com/Amealky/MVVM_Kitty/assets/25056111/6eb923a0-e9b3-4c44-a35f-736ecc116c37)
+
+
 
 
 ## Overview

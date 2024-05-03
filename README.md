@@ -9,11 +9,13 @@
 ![Preview](https://github.com/Amealky/MVVM_Kitty/assets/25056111/6eb923a0-e9b3-4c44-a35f-736ecc116c37)
 
 
-
-
 ## Overview
 This Repository contains a simple MVVM Architecture using TheCatApi made in Kotlin without RX and without dagger2/Koin
 Just the basic :wink:
+
+Implementing [Cat API](https://thecatapi.com/)
+
+Made with [Android Studio 4.1](https://developer.android.com/studio/archive?hl=en)
 
 ### Packages
 

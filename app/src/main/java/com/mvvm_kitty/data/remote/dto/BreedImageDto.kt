@@ -6,8 +6,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class BreedImageDto(
-                         @Json(name = "breeds")
-                         val breeds : List<BreedDto>,
                          @Json(name = "width")
                          val width: Int = 0,
                          @Json(name = "id")
@@ -22,8 +20,7 @@ data class BreedImageDto(
             width,
             id,
             url,
-            height,
-            breeds[0].id
+            height
         )
 
     }

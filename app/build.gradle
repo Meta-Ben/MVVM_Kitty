@@ -26,7 +26,6 @@ android {
     buildTypes {
         all {
             it.buildConfigField "String", "API_BASE_URL", API_BASE_URL
-            it.buildConfigField "String", "API_KEY", API_KEY
         }
         release {
             minifyEnabled false

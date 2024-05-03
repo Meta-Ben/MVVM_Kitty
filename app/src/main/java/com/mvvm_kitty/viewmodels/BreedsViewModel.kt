@@ -24,8 +24,6 @@ import retrofit2.Response
 
 class BreedsViewModel(private val catService: CatService) : ViewModel() {
 
-
-
     var mObservableBreeds : MutableLiveData<List<BreedEntity>>? = MutableLiveData()
     var mObservableBreedImages : MutableLiveData<List<BreedImageEntity>>? = MutableLiveData()
 

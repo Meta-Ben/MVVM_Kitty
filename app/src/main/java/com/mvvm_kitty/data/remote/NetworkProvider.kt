@@ -31,8 +31,4 @@ object NetworkProvider {
 
     }
 
-    private fun createOkHttpClient(): OkHttpClient {
-        val okBuilder = OkHttpClient.Builder()
-        return okBuilder.build()
-    }
 }

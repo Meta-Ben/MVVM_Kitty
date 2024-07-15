@@ -1,8 +1,7 @@
-<h1 align="center"> MVVM Template with Cats :cat: </h1>
+<h1 align="center">:cat: MVVM Template with Cats :cat: </h1>
 <p align="center">
-<img src="https://img.shields.io/badge/platform-android-green.svg" />
-<img src="https://img.shields.io/badge/language-kotlin-orange.svg" />
-<img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" />
+ <img src="https://img.shields.io/badge/Android-%204--2--1?style=for-the-badge&label=platform&color=green">
+ <img src="https://img.shields.io/badge/Kotlin-%204--2--1?style=for-the-badge&label=language&color=orange">
 </p>
 
 ## Preview
